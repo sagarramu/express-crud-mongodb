@@ -49,12 +49,12 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-
 var mongoose = require('mongoose');
 //Db Connection Start 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/myproject1', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://sagarbhai:crZ73OCEwzA87x4H@cluster0-9qios.gcp.mongodb.net/myproject1?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err))
 //DB Connection End
+
 module.exports = app;
