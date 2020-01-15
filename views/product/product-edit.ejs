@@ -1,0 +1,64 @@
+<%- include('../layout/header') -%>
+<%- include('../layout/sidebar') -%>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Edit Product</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Product</a></li>
+                        <li class="breadcrumb-item active">Edit Product</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" method="POST" name="productform">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Product Details</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group row">
+                                        <label for="inputProductName" class="col-sm-2 control-label">Product
+                                            Name</label>
+                                        <div class="col">
+                                            <input type="text" value="<%= product.product_name %>" id="inputProductName"
+                                                class="form-control" step="1" name="product_name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group row">
+                                        <label for="inputProductLabel" class="col-sm-2 control-label">Status</label>
+                                        <div class="col">
+                                            <input type="text" value="<%= product.product_label %>"
+                                                id="inputProductLabel" class="form-control" step="1"
+                                                name="product_label">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-info">Save</button>
+                            <a href="/product" class="btn btn-default" role="button">Back</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+<%- include('../layout/footer') -%>

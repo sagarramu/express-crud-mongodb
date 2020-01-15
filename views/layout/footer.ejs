@@ -1,0 +1,41 @@
+<footer class="main-footer">
+    <strong>Copyright &copy; 2019-2020 <a href="#">SagarRamoliya</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+        <b>Version</b> 1.0.0
+    </div>
+</footer>
+</div>
+<script src="/staticjs/plugins/jquery/jquery.min.js"></script>
+<script src="/staticjs/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="/staticjs/plugins/datatables/jquery.dataTables.js"></script>
+<script src="/staticjs/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<script src="/staticjs/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/staticjs/plugins/chart.js/Chart.min.js"></script>
+<script src="/staticjs/plugins/moment/moment.min.js"></script>
+<script src="/staticjs/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="/staticjs/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="/staticjs/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="/staticjs/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/staticjs/adminlte.js"></script>
+<script src="/staticjs/demo.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<script>
+    $(function () {
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "sDom": '<"wrapper"lf>"bottom"p',
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+</script>
+</body>
+
+</html>
