@@ -5,13 +5,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Product</h1>
+                    <h1>Edit Category</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Product</a></li>
-                        <li class="breadcrumb-item active">Add Product</li>
+                        <li class="breadcrumb-item"><a href="#">Category</a></li>
+                        <li class="breadcrumb-item active">Edit Category</li>
                     </ol>
                 </div>
             </div>
@@ -20,31 +20,32 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-
-                <form class="form-horizontal" method="POST" name="productform">
+                <form class="form-horizontal" method="POST" name="categoryform">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Product Details</h3>
+                            <h3 class="card-title">Category Details</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-8">
                                     <div class="form-group row">
-                                        <label for="inputproductName" class="col-sm-2 control-label">Product
+                                        <label for="inputCategoryName" class="col-sm-2 control-label">Category
                                             Name</label>
                                         <div class="col">
-                                            <input type="text" class="form-control col-sm-8" name="product_name"
-                                                id="inputproductName" placeholder="Product Name" required>
+                                            <input type="text" value="<%= category.category_name %>" id="inputCategoryName"
+                                                class="form-control" step="1" name="category_name">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
                                     <div class="form-group row">
-                                        <label for="inputproductLabel" class="col-sm-2 control-label">Category
-                                        </label>
+                                        <label for="inputCategoryLabel" class="col-sm-2 control-label">Category Label</label>
                                         <div class="col">
-                                            <input type="text" class="form-control col-sm-8" name="product_label"
-                                                id="inputproductLabel" placeholder="product Label">
+                                            <input type="text" value="<%= category.category_label %>"
+                                                id="inputCategoryLabel" class="form-control" step="1"
+                                                name="category_label">
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +53,7 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-info">Save</button>
-                            <a href="/product" class="btn btn-default" role="button">Back</a>
+                            <a href="/category" class="btn btn-default" role="button">Back</a>
                         </div>
                     </div>
                 </form>
@@ -60,5 +61,4 @@
         </div>
     </section>
 </div>
-
 <%- include('../layout/footer') -%>

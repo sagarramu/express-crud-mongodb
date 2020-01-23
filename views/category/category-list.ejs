@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Product</h1>
+                    <h1 class="m-0 text-dark">Category</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Product</li>
+                        <li class="breadcrumb-item active">Category</li>
                     </ol>
                 </div>
             </div>
@@ -26,10 +26,10 @@
                             <div class="col-10">
                             </div>
                             <div class="col-2">
-                                <a type="button" href="/product/addproduct"
+                                <a type="button" href="/category/addcategory"
                                     class="btn btn-sm btn-primary float-sm-right" role="button"><i
                                         class="fa fa-plus-circle"></i> &nbsp;Add
-                                    Product
+                                    Category
                                 </a>
                             </div>
                         </div>
@@ -39,25 +39,25 @@
                             <thead>
                                 <tr>
                                     <th>SR#</th>
-                                    <th>Product Name</th>
                                     <th>Category Name</th>
+                                    <th>Category Label</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% if(product_array.length>0) { %>
-                                <% for(var i=0; i<product_array.length;i++) { %>
+                                <% if(category_array.length>0) { %>
+                                <% for(var i=0; i<category_array.length;i++) { %>
                                 <tr>
                                     <td><%= i+1 %></td>
-                                    <td><%= product_array[i].product_name %></td>
-                                    <td><%= product_array[i].product_label %></td>
+                                    <td><%= category_array[i].category_name %></td>
+                                    <td><%= category_array[i].category_label %></td>
                                     <td class="text-center py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
-                                            <a href="/product/view/<%= product_array[i]._id %>" class="btn btn-success">
+                                            <a href="/category/view/<%= category_array[i]._id %>" class="btn btn-success">
                                                 <i class="fas fa-eye"> </i></a> &nbsp;
-                                            <a href="/product/edit/<%= product_array[i]._id %>" class="btn btn-info"> <i
+                                            <a href="/category/edit/<%= category_array[i]._id %>" class="btn btn-info"> <i
                                                     class="fas fa-edit"> </i></a>&nbsp;
-                                            <a href="/product/delete/<%= product_array[i]._id %>"
+                                            <a href="/category/delete/<%= category_array[i]._id %>"
                                                 class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </td>

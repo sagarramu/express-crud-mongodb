@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/product');
+var categoryRouter = require('./routes/category');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
+app.use('/category', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -52,6 +54,7 @@ app.use(function (err, req, res, next) {
 var mongoose = require('mongoose');
 //Db Connection Start 
 mongoose.Promise = global.Promise;
+// mongoose.connect('mongodb://localhost:27017/myproject1', { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connect('mongodb+srv://sagarbhai:crZ73OCEwzA87x4H@cluster0-9qios.gcp.mongodb.net/myproject1?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('connection succesful'))
   .catch((err) => console.error(err))
