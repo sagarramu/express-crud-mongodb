@@ -40,15 +40,36 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group row">
-                                        <label for="inputproductLabel" class="col-sm-2 control-label">Category
-                                        </label>
+                                        <label for="inputproductLabel" class="col-sm-2 control-label">Product
+                                            Label</label>
                                         <div class="col">
                                             <input type="text" class="form-control col-sm-8" name="product_label"
-                                                id="inputproductLabel" placeholder="product Label">
+                                                id="inputproductLabel" placeholder="Product Label" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group row">
+                                        <label for="inputcategoryLabel" class="col-sm-2 control-label">Category
+                                        </label>
+                                        <div class="col">
+                                            <select name="category" class="form-control col-sm-8"
+                                                id="inputcategoryLabel">
+                                                <% if(category.length>0) { %>
+                                                <% for(var i=0; i<category.length;i++) { %>
+                                                <option value="<%= category[i]._id %>">
+                                                    <%= category[i].category_name %>
+                                                </option>
+                                                <% } %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-info">Save</button>

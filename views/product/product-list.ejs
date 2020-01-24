@@ -50,7 +50,7 @@
                                 <tr>
                                     <td><%= i+1 %></td>
                                     <td><%= product_array[i].product_name %></td>
-                                    <td><%= product_array[i].product_label %></td>
+                                    <td><%= product_array[i]._category.category_name %></td>
                                     <td class="text-center py-0 align-middle">
                                         <div class="btn-group btn-group-sm">
                                             <a href="/product/view/<%= product_array[i]._id %>" class="btn btn-success">

@@ -3,9 +3,21 @@ var router = express.Router();
 
 //Call Product Database Model
 var ProductModel = require('../schema/product_table');
+var CategoryModel = require('../schema/category_table');
 
 router.get('/addproduct', function (req, res, next) {
-    res.render('product/product-add');
+
+    CategoryModel.find(function (err, db_category_array) {
+        if (err) {
+            console.log("Error in Fetch Data " + err);
+        } else {
+            //Print Data in Console
+            console.log(db_category_array);
+            //Render User Array in HTML Table
+            res.render('product/product-add', { category: db_category_array });
+
+        }
+    });
 });
 
 //Add Form Processing using Post Method 
@@ -14,7 +26,8 @@ router.post('/addproduct', function (req, res, next) {
     //Create an Array 
     const mybodydata = {
         product_name: req.body.product_name,
-        product_label: req.body.product_label
+        product_label: req.body.product_label,
+        _category: req.body.category,
     }
     var data = ProductModel(mybodydata);
     data.save(function (err) {
@@ -28,15 +41,19 @@ router.post('/addproduct', function (req, res, next) {
 
 // product list page
 router.get('/', function (req, res, next) {
+
     ProductModel.find(function (err, db_product_array) {
-        if (err) {
-            console.log("Error in Fetch Data " + err);
-        } else {
-            //Print Data in Console
-            console.log(db_product_array);
-            //Render Product Array in HTML Table
-            res.render('product/product-list', { product_array: db_product_array });
-        }
+
+        console.log("Product Data " + db_product_array);
+        if (err) res.json({ message: 'Error in Fetch Data.' });
+        ProductModel.find({})
+            .populate('_category')
+            .exec(function (err, db_product_array) {
+                //Print Data in Console
+                console.log(" Next Last Task " + db_product_array);
+                //Render Product Array in HTML Table
+                res.render("product/product-list", { product_array: db_product_array });
+            })
     });
 });
 
@@ -57,12 +74,16 @@ router.get('/delete/:id', function (req, res) {
 router.get('/view/:id', function (req, res) {
     console.log(req.params.id);
     ProductModel.findById(req.params.id, function (err, db_product_array) {
-        if (err) {
-            console.log("Error in Single Record Fetch" + err);
-        } else {
-            console.log(db_product_array);
-            res.render('product/product-view', { product: db_product_array });
-        }
+        console.log("Product Data " + db_product_array);
+        if (err) res.json({ message: 'Error in Single Record Fetch.' });
+        ProductModel.find({})
+            .populate('_category')
+            .exec(function (err, db_product_array) {
+                //Print Data in Console
+                console.log(" Next Last Task " + db_product_array);
+                //Render Product Array in HTML Table
+                res.render("product/product-view", { product: db_product_array });
+            })
     });
 });
 
@@ -72,7 +93,7 @@ router.get('/edit/:id', function (req, res) {
         if (err) {
             console.log("Edit Fetch Error " + err);
         } else {
-            console.log(db_product_array);
+            console.log('db_product_array' + db_product_array);
             res.render('product/product-edit', { product: db_product_array });
         }
     });
