@@ -76,7 +76,7 @@ router.get('/view/:id', function (req, res) {
     ProductModel.findById(req.params.id, function (err, db_product_array) {
         console.log("Product Data " + db_product_array);
         if (err) res.json({ message: 'Error in Single Record Fetch.' });
-        ProductModel.find({})
+        ProductModel.findById(req.params.id)
             .populate('_category')
             .exec(function (err, db_product_array) {
                 //Print Data in Console
@@ -90,12 +90,18 @@ router.get('/view/:id', function (req, res) {
 //Get Product User for Edit Record
 router.get('/edit/:id', function (req, res) {
     ProductModel.findById(req.params.id, function (err, db_product_array) {
-        if (err) {
-            console.log("Edit Fetch Error " + err);
-        } else {
-            console.log('db_product_array' + db_product_array);
-            res.render('product/product-edit', { product: db_product_array });
-        }
+        // console.log("Product Data " + db_product_array);
+        if (err) res.json({ message: 'Error in Single Record Fetch.' });
+        CategoryModel.find(function (err, db_category_array) {
+            ProductModel.findById(req.params.id)
+                .populate('_category')
+                .exec(function (err, db_product_array) {
+                    //Print Data in Console
+                    // console.log(" Next Last Task " + db_product_array);
+                    //Render Product Array in HTML Table
+                    res.render("product/product-edit", { product: db_product_array, category: db_category_array });
+                })
+        });
     });
 });
 
@@ -103,7 +109,8 @@ router.get('/edit/:id', function (req, res) {
 router.post('/edit/:id', function (req, res) {
     const mybodydata = {
         product_name: req.body.product_name,
-        product_label: req.body.product_label
+        product_label: req.body.product_label,
+        _category: req.body.category,
     }
     ProductModel.findByIdAndUpdate(req.params.id, mybodydata, function (err) {
         if (err) {

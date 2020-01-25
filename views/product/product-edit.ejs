@@ -57,12 +57,18 @@
                                         <label for="inputProductLabel" class="col-sm-2 control-label">Category
                                             Name</label>
                                         <div class="col">
-                                            <!-- <% if(category[i].category_name == product._category) %>
-                                            <% var isval = "selected" %>
-                                            <% } %> -->
-
-                                            <input type="text" name="_category" value="<%= product._category %>"
-                                                required>
+                                            <select name="category" class="form-control col-sm-8"
+                                                id="inputcategoryLabel">
+                                                <% if(category.length>0) { %>
+                                                <% for(var i=0; i<category.length;i++) { 
+                                                    var selected = ( category[i].category_name == product._category.category_name ) ? "selected" : "";
+                                                    %>
+                                                <option value="<%= category[i]._id %>" <%= selected %>>
+                                                    <%= category[i].category_name %>
+                                                </option>
+                                                <% } %>
+                                                <% } %>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
